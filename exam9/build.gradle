@@ -1,0 +1,5 @@
+// println 'exam8'
+apply plugin: 'groovy'
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.4'
+}

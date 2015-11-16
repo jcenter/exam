@@ -4,7 +4,7 @@ allprojects {
     repositories {
         maven {
             //url "http://192.168.1.11:8081/artifactory/libs-release/"
-            url "http://192.168.2.101:8081/artifactory/libs-release/"
+            url "http://localhost:8081/artifactory/libs-release/"
         }
     }
     afterEvaluate { project ->

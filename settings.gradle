@@ -1,3 +1,3 @@
 // println 'This is executed during the initialization phase.'
 // println rootProject.name
-include 'exam7', 'exam8'
+include 'exam7', 'exam8', 'exam9'
