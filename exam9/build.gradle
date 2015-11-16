@@ -1,5 +1,8 @@
 // println 'exam8'
 apply plugin: 'groovy'
+apply plugin: 'java'
+
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.4'
+    testCompile 'junit:junit:4.12'
 }
