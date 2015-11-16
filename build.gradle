@@ -1,5 +1,15 @@
 
 defaultTasks('task1', 'hello', 'checksum')
+allprojects {
+    afterEvaluate { project ->
+        if (project.hasExample) {
+            println "Adding example task to $project"
+            project.task('example') << {
+                println "Running example for $project"
+            }
+        }
+    }
+}
 
 task hello {
     doLast {
