@@ -3,13 +3,21 @@ defaultTasks('task1', 'hello', 'checksum')
 allprojects {
     afterEvaluate { project ->
         if (project.hasExample) {
-            println "Adding example task to $project"
+            // println "Adding example task to $project"
             project.task('example') << {
                 println "Running example for $project"
             }
         }
     }
 }
+
+// gradle.afterProject {project, projectState ->
+//     if (projectState.failure) {
+//         println "Evaluation of $project FAILED $projectState"
+//     } else {
+//         println "Evaluation of $project succeeded $projectState"
+//     }
+// }
 
 task hello {
     doLast {
@@ -89,10 +97,10 @@ task loadfile << {
     }
 }
 
-println 'This is executed during the configuration phase.'
+// println 'This is executed during the configuration phase.'
 
 task configured {
-    println 'This is also executed during the configuration phase.'
+    // println 'This is also executed during the configuration phase.'
 }
 
 task test << {
@@ -106,5 +114,5 @@ task testBoth {
     doLast {
       println 'This is executed last during the execution phase.'
     }
-    println 'This is executed during the configuration phase as well.'
+    // println 'This is executed during the configuration phase as well.'
 }
