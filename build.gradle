@@ -1,6 +1,11 @@
 
 defaultTasks('task1', 'hello', 'checksum')
 allprojects {
+    repositories {
+        maven {
+            url "http://192.168.1.11:8081/artifactory/libs-release/"
+        }
+    }
     afterEvaluate { project ->
         if (project.hasExample) {
             // println "Adding example task to $project"
@@ -115,4 +120,23 @@ task testBoth {
       println 'This is executed last during the execution phase.'
     }
     // println 'This is executed during the configuration phase as well.'
+}
+
+// println "source dir is $test.ext"
+
+task distribution << {
+    println "We build the zip with version=$version"
+}
+
+task release(dependsOn: 'distribution') << {
+    println 'We release now'
+}
+
+// println version
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
 }
