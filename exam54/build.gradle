@@ -5,15 +5,37 @@ apply plugin: 'maven'
 //     compile 'org.codehaus.groovy:groovy-all:2.4.4'
 // }
 
+configurations {
+    deployerJars
+}
+
+dependencies {
+    deployerJars "org.apache.maven.wagon:wagon-ssh:2.2"
+}
+
+version '1.0'
+group 'com.exam54'
+ext {
+    artifactId = 'exam54'
+}
 
 uploadArchives {
     repositories {
         mavenDeployer {
+            configuration = configurations.deployerJars
             repository(url: "file:///Users/joshuali/tmp/myRepo")
-            pom.version = '1.0'
-            pom.artifactId = 'exam54'
-            pom.groupId = 'com.exam54'
+            pom.version = version
+            pom.artifactId = artifactId
+            pom.groupId = group
         }
+    }
+}
+
+install {
+    repositories.mavenInstaller {
+        pom.version = version
+        pom.artifactId = artifactId
+        // pom.groupId = group
     }
 }
 
@@ -21,9 +43,9 @@ task writeNewPom << {
     pom {
         project {
             inceptionYear '2008'
-            version '1.0'
-            artifactId 'exam54'
-            groupId 'com.exam54'
+            version version
+            artifactId artifactId
+            groupId group
             licenses {
                 license {
                     name 'The Apache Software License, Version 2.0'

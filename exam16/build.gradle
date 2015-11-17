@@ -2,3 +2,17 @@ task hello << {
     String greeting = 'hello from Ant'
     ant.echo(message: greeting)
 }
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath group: 'com.exam60', name: 'exam60',
+                  version: '1.0'
+    }
+}
+
+task greeting(type: org.gradle.GreetingTask) {
+    greeting = 'howdy!'
+}
