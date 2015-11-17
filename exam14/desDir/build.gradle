@@ -1,5 +1,5 @@
 tasks.create(name:'copy', type:Copy){
-    // println("create task copy")
+    println("create 1task copy")
 
     from(file('srcDir'))
     into(file('desDir'))
