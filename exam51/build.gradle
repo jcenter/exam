@@ -5,5 +5,9 @@ repositories {
 }
 
 dependencies {
+    // def a = localGroovy()
+    // println a.group
+    // println a.name
+    // println a.version
     testCompile 'junit:junit:4.12'
 }

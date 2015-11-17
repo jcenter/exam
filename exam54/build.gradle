@@ -1,0 +1,18 @@
+
+apply plugin: 'java'
+apply plugin: 'maven'
+// dependencies {
+//     compile 'org.codehaus.groovy:groovy-all:2.4.4'
+// }
+
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://~/tmp/myRepo/")
+            pom.version = '1.0'
+            pom.artifactId = 'exam54'
+            pom.groupId = 'com.exam54'
+        }
+    }
+}

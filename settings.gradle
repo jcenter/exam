@@ -1,4 +1,4 @@
 // println 'This is executed during the initialization phase.'
 // println rootProject.name
 include 'exam7', 'exam8', 'exam9', 'exam11', 'exam13', 'exam14', 'exam15', 'exam16'
-include 'exam17', 'exam45', 'exam51'
+include 'exam17', 'exam45', 'exam51', 'exam54'
