@@ -8,11 +8,10 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath group: 'com.exam60', name: 'exam60',
-                  version: '1.0'
+        /*classpath group: 'com.exam60', name: 'exam60', version: '1.0'*/
     }
 }
 
-task greeting(type: org.gradle.GreetingTask) {
+/*task greeting(type: org.gradle.GreetingTask) {
     greeting = 'howdy!'
-}
+}*/
