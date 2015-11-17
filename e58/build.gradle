@@ -23,3 +23,29 @@ class GreetingPluging2 implements Plugin<Project> {
 class GreetingPluging2Extension {
     def String message = "sfjdiasfjaisdf"
 }
+
+
+class FileGreetingTask extends DefaultTask {
+    def destion
+
+    File getDestion(){
+        return project.file(destion)
+    }
+
+    @TaskAction
+    def greet(){
+        def file = getDestion()
+        file.parentFile.mkdirs()
+        file.write "helllllll"
+        println()
+    }
+}
+
+task greet(type: FileGreetingTask){
+    destion = {project.greetingFile}
+}
+
+task sayGreet(dependsOn:greet) << {
+    println file(greetingFile).text
+}
+ext.greetingFile = "$buildDir/h.text"
