@@ -7,3 +7,19 @@ class GreetingPlugin implements Plugin<Project> {
         }
     }
 }
+
+
+apply plugin:GreetingPluging2
+
+class GreetingPluging2 implements Plugin<Project> {
+    void apply(Project project){
+        project.extensions.create("greeting", GreetingPluging2Extension)
+        project.task("hello2") << {
+            println project.greeting.message
+        }
+    }
+}
+
+class GreetingPluging2Extension {
+    def String message = "sfjdiasfjaisdf"
+}
