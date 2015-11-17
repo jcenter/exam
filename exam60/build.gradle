@@ -4,6 +4,7 @@ apply plugin: 'maven'
 dependencies {
     compile gradleApi()
     compile localGroovy()
+    // testCompile testKit()
 }
 version '1.0'
 group 'com.exam60'
