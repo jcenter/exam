@@ -9,10 +9,28 @@ apply plugin: 'maven'
 uploadArchives {
     repositories {
         mavenDeployer {
-            repository(url: "file://~/tmp/myRepo/")
+            repository(url: "file:///Users/joshuali/tmp/myRepo")
             pom.version = '1.0'
             pom.artifactId = 'exam54'
             pom.groupId = 'com.exam54'
         }
     }
+}
+
+task writeNewPom << {
+    pom {
+        project {
+            inceptionYear '2008'
+            version '1.0'
+            artifactId 'exam54'
+            groupId 'com.exam54'
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+        }
+    }.writeTo("$buildDir/newpom.xml")
 }
