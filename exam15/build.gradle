@@ -1,0 +1,46 @@
+apply plugin: 'java'
+
+task list << {
+    File srcDir = file('src')
+    def collection = files { srcDir.listFiles() }
+    collection.collect{it}.sort().each{println it.name}
+}
+
+task listByTree << {
+    FileTree tree = fileTree(dir:'src').include('**/*.java')
+    tree.each {File file ->
+        println file
+    }
+    tree.visit {element ->
+        println "$element.relativePath => $element.file"
+    }
+}
+task listZipByTree << {
+    FileTree tree = zipTree('src.zip')
+    tree.each {File file ->
+        println file
+    }
+    tree.visit {element ->
+        println "$element.relativePath => $element.file"
+    }
+}
+
+task zip(type:Zip){
+    from 'src'
+    into('libs'){
+        from configurations.runtime
+    }
+}
+
+task libs(type: Sync) {
+    // println configurations.runtime
+    from configurations.runtime
+    into "$buildDir/libs"
+}
+
+version = 1.0
+
+task myZip(type: Zip) {
+    from 'src'
+    baseName = 'src'
+}

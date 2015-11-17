@@ -1,0 +1,3 @@
+class exam7 {
+    
+}

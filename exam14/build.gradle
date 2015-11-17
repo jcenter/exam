@@ -9,7 +9,7 @@ tasks.create(name:'copy', type:Copy){
 
 task transform {
     ext.srcFile = file("srcDir/build.gradle")
-    println buildDir
+    // println buildDir
     ext.destDir = new File(projectDir, "generated")
     inputs.file srcFile
     outputs.dir destDir
@@ -18,3 +18,13 @@ task transform {
         destDir.mkdir()
     }
 }
+
+tasks.addRule("Pattern:pint<ID>") { String taskName ->
+    if(taskName.startsWith("pint")){
+        task(taskName) << {
+            println "pint:" + (taskName - 'pint')
+        }
+    }
+}
+
+transform.dependsOn(pintserver1, 'pintserver2')
