@@ -5,3 +5,16 @@ tasks.create(name:'copy', type:Copy){
     into(file('desDir'))
 
 }
+
+
+task transform {
+    ext.srcFile = file("srcDir/build.gradle")
+    println buildDir
+    ext.destDir = new File(projectDir, "generated")
+    inputs.file srcFile
+    outputs.dir destDir
+    doLast {
+        println "transform file"
+        destDir.mkdir()
+    }
+}
